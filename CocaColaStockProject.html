@@ -1,0 +1,189 @@
+<html>
+  <head>
+
+<link rel="HomePage" href="Finance.html" /link>
+
+   <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <title>Starter Template for Bootstrap</title>
+
+    <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="CocaColaStockProject.css">
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <script type="text/javascript">
+
+      google.charts.load('current', {'packages':['corechart']});
+
+var fact = Math.random(0 - 1);
+
+if(fact <= .2){
+  confirm("Did you know that: Coca Cola was originally used as medicine when it was invented in the 19th century");
+};
+if(.2 < fact <= .4){
+  confirm("Did you know that: There are only 2 countries in the world, Cuba and North Korea, that don’t sell Coca-Cola products.");
+};
+if(.4 < fact <= .6){
+confirm("During World War 2, the owner of Coca-Cola made sure “to see that every American in uniform gets a bottle of Coca-Cola, wherever he is and whatever it costs the Company.”");
+};
+if(.6 < fact <= .8){
+confirm("Dr. Pepper is bottled by both Coca-Cola and Pepsi, depending on the location in USA.");
+};
+if(.8 < fact <= 1){
+confirm("In the 90’s, Coca Cola had a plan to have their vending machines automatically raise or lower the price of a soda according to that day’s temperature, but didn’t go through with it.");
+};
+
+        var data = getData("Day");
+        var options = {'title':'CocaColaStock',
+                       'width':400,
+                       'height':300,
+                      backgroundColor:
+                      {
+                        fill: '#404040'
+                      },
+                      hAxis:
+                      {
+                        textStyle:
+                        {
+                          color: 'white'
+                        }
+                      },
+                       vAxis:
+                      {
+                        textStyle:
+                        {
+                          color: 'white'
+                        }
+                      }
+                    };
+
+      function drawChart() {
+
+        var chartData = google.visualization.arrayToDataTable(data);
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        chart.draw(chartData, options);
+
+      };
+
+function getData(dataRange) {
+
+  var dataArray = [
+        ['Date','Stock Value'],
+
+  ];
+
+    var dataArray;
+    var BASE_URL = "https://jquery.yahooapis.com/v1/public/yql?p=";
+    var yql_query ='select * from yahoo.finance.historicaldata where symbol = "KO" and startDate = "2009-09-11" and endDate = "2016-11-01"'
+    var yql_query_str = encodeURI(BASE_URL=yql_query);
+
+
+if (dataRange === "day") {
+yql_query ='select * from yahoo.finance.historicaldata where symbol = "KO" and startDate = "2015-11-01" and endDate = "2016-11-01"'
+}else if (dataRange === "month") {
+ yql_query ='select * from yahoo.finance.historicaldata where symbol = "KO" and startDate = "2016-05-01" and endDate = "2016-11-01"'
+};
+var yql_query_str = encodeURI(BASE_URL=yql_query);
+var query_str_final = yql_query_str = "&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys"
+
+$.getJSON(query_str_final, function(data) {
+ var stockArray = data.query.results.quote;
+  for(var i = 0; i < stockArray.length; i++){
+var currentObject = stockArray[i];
+console.log(currentobject.Close);
+var pushedArray = [currentObject.Date, parseFloat(currentObject.Close)];
+  dataArray[i+1] = pushedArray;
+
+
+  }
+   return dataArray
+});
+};
+
+function buttonPressed(buttonTitle) {
+      data = getData(buttonTitle);
+
+    var chartData = google.visualization.arrayToDataTable(data);
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        chart.draw(chartData, options);
+
+};
+
+    </script>
+  </head>
+  <body>
+
+<link rel="stylesheet" href="Finance.css">
+
+    <nav class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Coca Cola Buisness</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">;
+          <ul class="nav navbar-nav">
+            <li class="Asset"><a href="Finance.html">Home</a></li>
+            <li><a class="Graph" href="CocaColaStockProject.html" >Stock Price / Graph</a>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <h2> Current Stock price Information</h2>
+<p> Trending Information: Rising / Bullish</P>
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Green_Arrow_Up_Darker.svg" WIDTH=25 HEIGHT=25>
+
+    <h3> The Stock Price Value Chart</h3> 
+   <div id="chart_div"></div>
+<div class="row">
+  <div class="col-md-12">
+  <button type="button" class="btn btn-default" onclick="buttonPressed('day')">1d</button>
+  <button type="button" class="btn btn-default" onclick="buttonPressed('month')">1m</button>
+
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <p id="change"></p>
+</div>
+
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"')</script>
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.js">
+
+ 
+var BASE_URL = "https://jquery.yahooapis.com/v1/public/yql?p=";
+var yql_query ='select * from yahoo.finance.historicaldata where symbol = "KO" and startDate = "2009-09-11" and endDate = "2016-11-01"'
+var yql_query_str = encodeURI(BASE_URL=yql_query);
+var query_str_final = yql_query_str = "&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys"
+  
+S.getJSON(query_str_final, function(data); {
+ var stockArray = data.query.results.quote;
+  for(var i -0; i < stockArray.length; i++){
+var currentObject = stockArray[i];
+console.log(currentobject.Close);
+
+
+  }
+});
+
+
+
+</script>
+  </body>
+</html>

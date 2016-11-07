@@ -1,0 +1,31 @@
+body {
+  background: url('https://wallpaperscraft.com/image/coca-cola_drink_soda_background_brand_logo_69228_3840x2400.jpg');
+  background-size: cover;
+}
+h2{
+	text-align: center;
+	color: white;
+}
+h1{
+	text-align: center;
+	color: white;
+}
+p{
+	text-align: center;
+	color: white;
+}
+img{
+	width: 15%;
+	margin-left: 73%;
+}
+h3{
+	text-align: center;
+	color: white;
+}
+#chart_div{
+	margin-left: 33%;
+	color: #404040;
+}
+button{
+	margin-left: 30%;
+}

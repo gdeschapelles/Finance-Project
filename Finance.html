@@ -1,0 +1,82 @@
+<head>
+
+    <link rel="CocaColaInformation" href="CocaColaStockProject.html" /link>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <title>Starter Template for Bootstrap</title>
+
+    <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+
+  </head>
+    <body>
+
+<link rel="stylesheet" href="Finance.css">
+
+    <nav class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Coca Cola Buisness</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="Asset"><a href="Finance.html">Home</a></li>
+            <li><a class="Graph" href="CocaColaStockProject.html" >Stock Price / Graph</a>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <div class="starter-template">
+        <h1>Welcome to Coca Cola</h1>
+        <p class="lead">Coca Cola is an American beverage company that owns Fanta, Sprite, Minute Maid and many more brands and is headquartered in Atlanta, Georgia.  The company was first started in 1886 by a pharmacist by the name of John Smith Pemberton and today is estimated to be worth 79.2 billion dollars.  The company's main soda, Coca Cola, is the #1 most popular drink around the world today and an estimated 1.9 billion serving are comsumed everyday globally.  The distinct bottle can be recognized all over the world as the company continues to grow and distribute its products world-wide.</p>
+      </div>
+
+    </div>
+
+<div class = "container">
+Share a Coke with Friends!
+
+<img src="http://www.dhpfilm.com/blog/files/2015/01/share-a-coke1.jpg" style="width:200px;height:200px;">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+    <script>
+
+var BASE_URL = 'http://query.yahooapis.com/v1/public/yql?q=';
+var yql_query = 'select * from yahoo.finance.quote where symbol in ("YHOO","AAPL","GOOG","MSFT")';
+var yql_query_str = encodeURI(BASE_URL+yql_query);
+var query_str_final = yql_query_str + "&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
+
+$.getJSON(query_str_final, function(data) {
+  console.log(data);
+});
+
+    </script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
